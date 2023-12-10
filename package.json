@@ -1,4 +1,4 @@
-{
+{heroku config:unset HTTP_PROXY HTTPS_PROXY
   "name": "preparing-nodejs-course",
   "version": "1.0.0",
   "description": "",
