@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon server.js",
-    "start": "SET NODE_ENV=production & node server.js"
+    "start": "SET NODE_ENV=production & node server.js",
+    "heroku-prebuild": "echo This runs before Heroku installs dependencies.",
+    "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
+    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies.",
+    "build": "ng build"
   },
   "repository": {
     "type": "git",
@@ -53,7 +57,7 @@
     "eslint-plugin-react": "^7.28.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
-  },
+  },  
   "engines": {
     "node": "^20.9.0"
   }
