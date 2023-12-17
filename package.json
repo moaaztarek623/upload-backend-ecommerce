@@ -1,5 +1,5 @@
 {
-  "name": "preparing-nodejs-course",
+  "name": "upload-backend-ecommerce",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Boghdady/preparing-nodejs-course.git"
+    "url": "git+https://github.com/moaaztarek623/upload-backend-ecommerce.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Boghdady/preparing-nodejs-course/issues"
+    "url": "https://github.com/moaaztarek623/upload-backend-ecommerce/issues"
   },
-  "homepage": "https://github.com/Boghdady/preparing-nodejs-course#readme",
+  "homepage": "https://github.com/moaaztarek623/upload-backend-ecommerce#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
