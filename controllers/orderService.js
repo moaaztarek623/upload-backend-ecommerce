@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
-const stripe = require('stripe')('sk_test_51OKiAhAsWRUM1s8NlCj9yAlI0GvFadcTcvN09s4mwr30Cv5ROZWfsYEGSbMyfiUcEWGHf7pn3H2hp0kCRL3tlNpK00X8Z1lpgB');
-
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+console.log(config.env.STRIPE_SECRET_KEY)
 const ApiError = require('../utils/apiError');
 const factory = require('./handlersFactory');
 const User = require('../models/userModel');
@@ -134,7 +134,7 @@ exports.checkoutSession = asyncHandler(async (req, res, next) => {
     line_items: [
       {
         name: req.user.name,
-        price: cartPrice * 100,
+        amount: cartPrice * 100,
         currency: 'egp',
         quantity: 1,
       },
@@ -206,7 +206,7 @@ exports.webhookCheckout = (req, res, next) => {
     event = stripe.webhooks.constructEvent(
       req.body,
       signature,
-      'whsec_t5a7XrmIiC84KnaqJWC7jj0X32KzoxYP'
+      process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`);
