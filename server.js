@@ -54,9 +54,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-if (config.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
-  console.log(`Mode : ${config.env.NODE_ENV}`.yellow);
+  console.log(`Mode : ${process.env.NODE_ENV}`.yellow);
 }
 
 app.use(compression());
@@ -85,7 +85,7 @@ app.all('*', (req, res, next) => {
 // 2) with refactoring
 app.use(globalError);
 
-const PORT = config.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`.green);
 });

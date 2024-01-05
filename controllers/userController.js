@@ -103,8 +103,8 @@ exports.updateLoggedUserPassword = asyncHandler(async (req, res, next) => {
   );
   // 2) Generate token
   // logged in again after updating password and send jwt (i will make it optional)
-  const token = jwt.sign({ id: user._id }, config.env.JWT_SECRET, {
-    expiresIn: config.env.JWT_EXPIRES_IN,
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
   res.status(200).json({ data: user, token });
   next();

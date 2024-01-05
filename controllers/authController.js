@@ -21,8 +21,8 @@ exports.signup = asyncHandler(async (req, res, next) => {
     password: req.body.password,
   });
 
-  const token = jwt.sign({ id: user._id }, config.env.JWT_SECRET, {
-    expiresIn: config.env.JWT_EXPIRES_IN,
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
   res.status(201).json({ data: user, token });
@@ -45,8 +45,8 @@ exports.login = asyncHandler(async (req, res, next) => {
     return next(new ApiError('Incorrect email or password'), 401);
   }
   // 3) Generate token
-  const token = jwt.sign({ id: user._id }, config.env.JWT_SECRET, {
-    expiresIn: config.env.JWT_EXPIRES_IN,
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
   // delete the password from the response
@@ -76,7 +76,7 @@ exports.auth = asyncHandler(async (req, res, next) => {
   // 2- Verify the token (check if the token changes the payload or the token is expired)
   // two errors maybe happens : 1- invalid token 2- expired token
   // convert a method that returns responses using a callback function to return a responses in a promise object
-  const decoded = jwt.verify(token, config.env.JWT_SECRET);
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
   // console.log(decoded);
 
   // 3- Check the user exists
@@ -240,8 +240,8 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
   await user.save();
 
   // 3) If everything ok, send token to client
-  const token = jwt.sign({ id: user._id }, config.env.JWT_SECRET, {
-    expiresIn: config.env.JWT_EXPIRES_IN,
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
   res.status(200).json({ token });
