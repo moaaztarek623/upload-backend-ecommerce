@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')('sk_test_51OKiAhAsWRUM1s8NlCj9yAlI0GvFadcTcvN09s4mwr30Cv5ROZWfsYEGSbMyfiUcEWGHf7pn3H2hp0kCRL3tlNpK00X8Z1lpgB');
 
 const ApiError = require('../utils/apiError');
 const factory = require('./handlersFactory');
@@ -206,7 +206,7 @@ exports.webhookCheckout = (req, res, next) => {
     event = stripe.webhooks.constructEvent(
       req.body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET
+      'whsec_t5a7XrmIiC84KnaqJWC7jj0X32KzoxYP'
     );
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`);
