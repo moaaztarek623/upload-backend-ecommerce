@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Connect to db
 const dbConnection = () => {
   mongoose
-    .connect(process.env.DB_URI)
+    .connect(config.env.DB_URI)
     .then((conn) => {
       console.log(
         `Database Connected : ${conn.connection.host}`.cyan.underline
